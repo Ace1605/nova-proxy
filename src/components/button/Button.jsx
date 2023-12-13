@@ -5,7 +5,7 @@ function Button({ text, onClick }) {
     <div>
       <button
         onClick={onClick}
-        className="w-[16.7rem] 880:w-[17.8rem] bg-primary-1000 text-white font-medium rounded-3xl py-3 px-8"
+        className="w-[16.7rem] 880:w-[17.8rem] shadow-lg bg-primary-1000 text-white font-medium rounded-3xl py-3 px-8"
       >
         {text}
       </button>
