@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { englishT, mathT, socialT } from "./constants";
 
 function Topics() {
   const [data, setData] = useState([]);
   const location = useLocation();
+  const navigate = useNavigate();
 
-  console.log(location);
   useEffect(() => {
     if (location.pathname.includes("english")) {
       setData(englishT);
@@ -20,9 +20,9 @@ function Topics() {
   return (
     <div>
       <div
-        className="my-8 880:my-12 relative h-[14rem] w-[20rem] 880:w-[24rem] rounded-t-3xl"
+        className="my-8 880:my-12 relative h-[14rem] w-[20rem] 880:w-[30rem] rounded-t-3xl"
         style={{
-          backgroundImage: `url("/images/school.jpg")`,
+          backgroundImage: `url("/images/bts.jpg")`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
@@ -34,7 +34,12 @@ function Topics() {
         </div>
       </div>
       {data.map((x) => (
-        <p className="py-3 px-4 880:px-8 w-[18rem] 880:w-[24rem] my-3 font-medium shadow rounded-3xl border border-primary-400 mx-auto border-primary-400">
+        <p
+          onClick={() => {
+            navigate(`${location.pathname}/${x.toLowerCase()}?${x}`);
+          }}
+          className="cursor-pointer py-3 px-4 880:px-8 w-[18rem] 880:w-[30rem] my-3 font-medium shadow rounded-3xl border border-primary-400 mx-auto border-primary-400 hover:scale-105"
+        >
           {x}
         </p>
       ))}
