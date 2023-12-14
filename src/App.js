@@ -5,6 +5,8 @@ import SignUp from "./components/pages/SignUp";
 import SignIn from "./components/pages/SignIn";
 import CourseSelect from "./components/pages/CourseSelect";
 import LessonTopics from "./components/pages/LessonTopics";
+import Lessons from "./components/pages/Lessons";
+import Quizes from "./components/pages/Quizes";
 function App() {
   return (
     <div className="container">
@@ -14,6 +16,8 @@ function App() {
           <Route path="/login" element={<SignIn />} />
           <Route path="/courses" element={<CourseSelect />} />
           <Route path="/courses/:name" element={<LessonTopics />} />
+          <Route path="/courses/:name/:lesson" element={<Lessons />} />
+          <Route path="/courses/:name/:lesson/quiz" element={<Quizes />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer delay={3000} position="top-right" />

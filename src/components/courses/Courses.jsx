@@ -23,7 +23,7 @@ function Courses() {
             onClick={() => {
               navigate(`/courses/${course.toLowerCase()}`);
             }}
-            className="bg-white p-4 shadow-lg rounded-2xl grid justify-items-center h-[6rem] w-[9rem] 880:w-[8rem] 880:h-[8rem] text-center hover:bg-neutral-50 cursor-pointer"
+            className="bg-white p-4 shadow-lg rounded-2xl grid justify-items-center h-[6rem] w-[9rem] 880:w-[8rem] 880:h-[8rem] text-center hover:bg-neutral-50 hover:scale-95 cursor-pointer"
           >
             <Icons course={course} />
             <p className="leading-[1.14rem] text-sm 880:text-base font-medium">

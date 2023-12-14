@@ -62,6 +62,7 @@ module.exports = {
         },
         red: {
           400: "#860A35",
+          700: "#DC0000",
         },
         blackhue: {
           100: "#2e2e2e",
