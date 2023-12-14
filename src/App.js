@@ -7,9 +7,11 @@ import CourseSelect from "./components/pages/CourseSelect";
 import LessonTopics from "./components/pages/LessonTopics";
 import Lessons from "./components/pages/Lessons";
 import Quizes from "./components/pages/Quizes";
+import LeaderBoard from "./components/pages/LeaderBoard";
+import Performance from "./components/pages/Performance";
 function App() {
   return (
-    <div className="container">
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<SignUp />} />
@@ -18,6 +20,8 @@ function App() {
           <Route path="/courses/:name" element={<LessonTopics />} />
           <Route path="/courses/:name/:lesson" element={<Lessons />} />
           <Route path="/courses/:name/:lesson/quiz" element={<Quizes />} />
+          <Route path="/leaderboard" element={<LeaderBoard />} />
+          <Route path="/performance" element={<Performance />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer delay={3000} position="top-right" />

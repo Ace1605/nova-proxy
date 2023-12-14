@@ -1,16 +1,16 @@
 import React from "react";
-import Lectures from "../lectures/Lectures";
+import PerformanceIndicator from "../performanceindicator/PerformanceIndicator";
 import Navbar from "../navbar/Navbar";
 
-function Lessons() {
+function Performance() {
   return (
     <>
       <Navbar />
       <div className="container grid place-items-center pt-[4%] pb-12">
-        <Lectures />
+        <PerformanceIndicator />
       </div>
     </>
   );
 }
 
-export default Lessons;
+export default Performance;
