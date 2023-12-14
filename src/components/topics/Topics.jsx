@@ -28,7 +28,7 @@ function Topics() {
         }}
       >
         <div className="flex items-center justify-center bg-white h-[5rem] w-full bottom-0 absolute rounded-t-3xl">
-          <p className="text-center font-medium">
+          <p className="text-center font-medium ">
             Select your preferred topic to learn
           </p>
         </div>
@@ -38,7 +38,7 @@ function Topics() {
           onClick={() => {
             navigate(`${location.pathname}/${x.toLowerCase()}?${x}`);
           }}
-          className="cursor-pointer py-3 px-4 880:px-8 w-[18rem] 880:w-[30rem] my-3 font-medium shadow rounded-3xl border border-primary-400 mx-auto border-primary-400 hover:scale-105"
+          className="cursor-pointer bg-primary-h700 text-white py-3 px-4 880:px-8 w-[18rem] 880:w-[30rem] my-3 font-medium shadow rounded-xl border border-primary-h700 mx-auto border-primary-400 hover:scale-105"
         >
           {x}
         </p>

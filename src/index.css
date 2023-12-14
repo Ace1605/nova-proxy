@@ -26,6 +26,27 @@
     overflow: hidden !important;
   }
 
+  .progress div div {
+    background: linear-gradient(
+      70deg,
+      rgba(245, 62, 6, 0.87),
+      rgba(228, 113, 6, 0.849)
+    ) !important;
+  }
+
+  .progress div div span {
+    position: absolute;
+    background: linear-gradient(
+      -170deg,
+      rgba(245, 62, 6, 0.87),
+      rgba(228, 58, 6, 0.849)
+    );
+    padding: 0.9rem 0.7rem !important;
+    border-radius: 50%;
+    font-size: 0.7rem !important;
+    border: 1px dashed white;
+  }
+
   h1 {
     @apply font-semibold tracking-tight;
   }
@@ -49,7 +70,7 @@
 
 @layer components {
   .container {
-    @apply relative mx-auto max-w-[1296px] min-w-[360px] min-h-[100vh] px-4;
+    @apply relative mx-auto max-w-[800px] min-w-[360px] px-4;
   }
 
   .light-button {

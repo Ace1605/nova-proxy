@@ -4,44 +4,50 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import { Avatar1 } from "../svg/Avatar";
 
-const spanStyle = {
-  color: "#000000",
-  padding: "1rem",
-};
-
-const divStyle = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  backgroundSize: "cover",
-  background: "#fff",
-  borderRadius: "1rem",
-};
-
 let lectureSlides = [
   {
-    question: "Which of the following is the correct plural of LUGGAGE",
-    options: ["Luggages", "Luggage", "Baggages", "None of the above"],
+    question: `In the sentence "She speaks softly," what type of adverb is "softly"?`,
+    options: [
+      "Adverb of Time",
+      "Adverb of Manner",
+      "Adverb of Place",
+      "Adverb of Degree",
+    ],
     choice: "",
   },
   {
-    question: "What is the correct plural of LUGGAGE",
-    options: ["Luggages", "agae", "Baggages", "None of the above"],
+    question: `Where should the adverb "quickly" be placed in the sentence "The athlete finished the race"?`,
+    options: [
+      "Before the main verb",
+      "After the auxiliary verb",
+      "At the beginning of the sentence",
+      "All of the above",
+    ],
     choice: "",
   },
   {
-    question: "Which of these is correct plural of LUGGAGE",
-    options: ["Luggages", "Lugge", "Baggages", "None of the above"],
+    question: `Choose the correct adverb to complete the sentence: "He completed the assignment ________ to earn a high grade."`,
+    options: ["Carefully", "Yesterday", "Quite", "Nearby"],
     choice: "",
   },
   {
-    question: "Which of the following is the correct plural of LUGGAGE",
-    options: ["Luggages", "Lugge", "Baggages", "None of the above"],
+    question: `In the sentence "After the rain stopped, they went outside to play," what is the adverbial phrase?`,
+    options: [
+      "After the rain stopped",
+      "They went outside",
+      "To play",
+      "Outside to play",
+    ],
     choice: "",
   },
   {
-    question: "Which of the following is the correct plural of LUGGAGE",
-    options: ["Luggages", "Luggage", "Baggages", "None of the above"],
+    question: `Find the error in the sentence "She sings good," and provide the correct form using an adverb.`,
+    options: [
+      "She sings well",
+      "She sings goodly.",
+      "She sings good.",
+      "She sings goodness.",
+    ],
     choice: "",
   },
 ];
@@ -89,43 +95,42 @@ function QuizHub() {
         <div className="slide-container w-[20rem] 880:w-[30rem]">
           <div className="mt-[7rem] p-8 bg-white w-full rounded-xl">
             <div className="flex gap-2">
-              <Avatar1 className="h-[3rem] w-[3rem]" />
               <div>
-                <p className="text-red-700 font-medium">Linda Knor</p>
+                <p className="text-primary-400 font-medium text-xl w-8/12 mb-4">
+                  Congratulations on completing this course!!
+                </p>
                 <p className="text-neutral-700 font-medium">
-                  3/{lectureSlides.length} points
+                  4/{lectureSlides.length} questions correctly
                 </p>
               </div>
             </div>
-            <p className="text-neutral-700 my-3 font-normal">
-              Ranked 22 nationwide
-            </p>
-            <p className="text-neutral-700 my-3 font-normal">
-              2 courses completed
-            </p>
             <p className="text-neutral-700 my-3 font-normal">Level 1</p>
+            <p className="text-neutral-700 my-3 font-normal">
+              Do you want to learn more?
+            </p>
+
             <button
               className="bg-gradient-to-r from-primary-400 to-primary-200 text-white py-2 px-4 w-full rounded-xl"
               type="button"
               style={{ marginRight: "20px" }}
-              onClick={back}
+              onClick={() => navigate("/courses")}
             >
-              View Leaderboard
+              Courses
             </button>
           </div>
         </div>
       ) : (
         <div className="slide-container w-[20rem] 880:w-[30rem]">
           <div
-            className="mt-8 mb-2 880:my-12 relative h-[12rem] rounded-t-3xl"
+            className="mt-8 mb-2 880:my-12 relative h-[14rem] rounded-t-3xl"
             style={{
               backgroundImage: `url("/images/bts.jpg")`,
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="flex items-center justify-center bg-white h-[5rem] w-full bottom-0 absolute rounded-t-3xl">
-              <p className="text-center font-medium">
+            <div className="flex items-center justify-center bg-white h-[7rem] w-full bottom-0 absolute rounded-t-3xl">
+              <p className="text-center font-medium px-2">
                 {lectureSlides[count].question}
               </p>
             </div>
@@ -142,8 +147,8 @@ function QuizHub() {
                     }}
                     className={
                       slide.choice === x || selected === x
-                        ? "bg-primary-400 text-white font-medium py-3 px-4 mx-auto 880:px-8 w-[18rem] my-3 880:w-[30rem] text-center shadow rounded-3xl border border-primary-400 border-primary-400"
-                        : "cursor-pointer bg-white font-medium py-3 px-4 mx-auto 880:px-8 w-[18rem] my-3 880:w-[30rem] text-center shadow rounded-3xl border border-primary-400 border-primary-400"
+                        ? "bg-primary-h700 text-white font-medium py-3 px-4 mx-auto 880:px-8 w-[18rem] my-3 880:w-[30rem] text-center shadow rounded-3xl border border-primary-h700 border-primary-400"
+                        : "cursor-pointer bg-white font-medium py-3 px-4 mx-auto 880:px-8 w-[18rem] my-3 880:w-[30rem] text-center shadow rounded-3xl border border-primary-h700 border-primary-400"
                     }
                   >
                     {x}

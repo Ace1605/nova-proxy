@@ -1,13 +1,24 @@
 import React from "react";
 import Courses from "../courses/Courses";
-import { FaFireFlameCurved } from "react-icons/fa6";
+import Navbar from "../navbar/Navbar";
+import { motion } from "framer-motion";
 
 function CourseSelect() {
   return (
-    <div className="grid place-items-center pt-[8%] pb-12">
-      <FaFireFlameCurved className="flex justify-self-start 880:justify-self-center text-primary-1000 text-7xl 880:text-9xl text-left" />
-      <Courses />
-    </div>
+    <>
+      <Navbar />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.4 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: false }}
+        transition={{
+          duration: 0.8,
+        }}
+        className="container grid place-items-center pt-[8%] pb-12"
+      >
+        <Courses />
+      </motion.div>
+    </>
   );
 }
 

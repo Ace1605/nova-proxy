@@ -7,9 +7,9 @@ export const mathT = [
 ];
 
 export const englishT = [
+  "Adverbs",
   "Idioms",
   "Adjectives",
-  "Adverbs",
   "Pluralization",
   "Comparatives and Superlatives",
 ];

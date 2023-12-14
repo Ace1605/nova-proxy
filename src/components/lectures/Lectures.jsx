@@ -5,32 +5,87 @@ import "react-slideshow-image/dist/styles.css";
 
 const spanStyle = {
   color: "#000000",
-  padding: "1rem",
+  padding: "0.1rem",
 };
 
 const divStyle = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  display: "grid",
   backgroundSize: "cover",
   background: "#fff",
   borderRadius: "1rem",
+  padding: "1rem",
 };
 
 const lectureSlides = [
   {
     lecture:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas earum necessitatibus voluptate officiis modi, dolor saepe iure atque nesciunt cupiditate fugit alias enim consectetur nemo in, ratione debitis ullam nisi!Illo laborum suscipit necessitatibus nihil quis? Cupiditate quod unde odit. Placeat voluptatem expedita debitis dignissimos quas, possimus libero est voluptatum, commodi quis sint labore aut dolore facilis laborum veritatis deleniti.",
+      "Introduction: \n Adverbs are an essential part of speech that add depth and detail to our language. They modify verbs, adjectives, and other adverbs, providing information about how, when, where, or to what degree an action or adjective occurs. In this lesson, we'll explore the different types of adverbs and how to use them effectively in sentences.",
     caption: "Slide 1",
   },
   {
-    lecture:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas earum necessitatibus voluptate officiis modi, dolor saepe iure atque nesciunt cupiditate fugit alias enim consectetur nemo in, ratione debitis ullam nisi!Illo laborum suscipit necessitatibus nihil quis? Cupiditate quod unde odit. Placeat voluptatem expedita debitis dignissimos quas, possimus libero est voluptatum, commodi quis sint labore aut dolore facilis laborum veritatis deleniti.",
+    lecture: `Adverbs of Manner: \n Answer the question: "How" ? \n Examples: quickly, beautifully, carefully \n Example sentence: She sings beautifully.`,
     caption: "Slide 2",
   },
   {
-    lecture:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas earum necessitatibus voluptate officiis modi, dolor saepe iure atque nesciunt cupiditate fugit alias enim consectetur nemo in, ratione debitis ullam nisi!Illo laborum suscipit necessitatibus nihil quis? Cupiditate quod unde odit. Placeat voluptatem expedita debitis dignissimos quas, possimus libero est voluptatum, commodi quis sint labore aut dolore facilis laborum veritatis deleniti.",
+    lecture: `Adverbs of Time: \n Answer the question: "When?" \n Examples: now, later, yesterday \n Example sentence: We will go to the park later.`,
+    caption: "Slide 3",
+  },
+  {
+    lecture: `Adverbs of Place: \n Answer the question: "Where?" \n Examples: here, there, everywhere \n Example sentence: The cat is hiding under the table.`,
+    caption: "Slide 2",
+  },
+  {
+    lecture: `Adverbs of Degree: \n
+Answer the question: "To what extent?" \n
+Examples: very, too, quite \n
+Example sentence: It is too hot outside
+`,
+    caption: "Slide 3",
+  },
+  {
+    lecture: `Adverbs of Frequency: \n
+Answer the question: "How often?" \n
+Examples: always, often, rarely \n
+Example sentence: She always arrives early.
+`,
+    caption: "Slide 2",
+  },
+  {
+    lecture: `Placement of Adverbs:\n
+Adverbs can appear in various positions within a sentence, depending on the emphasis you want to give. Common placements include: \n
+
+Before the main verb e.g She quickly ran to catch the bus.\n
+After the auxiliary verb e,g He is often late to meetings.\n
+At the beginning or end of a sentence e.g Unfortunately, the concert was canceled. The car stopped suddenly.
+`,
+    caption: "Slide 3",
+  },
+  {
+    lecture: `Double Negatives:\n
+Incorrect: He didn't hardly study.\n
+Correct: He hardly studied.\n
+Incorrect: She almost drove her kids to school every day.\n
+Correct: She drove her kids to school almost every day.\n
+Incorrect: The movie was extremely, incredibly, and unbelievably good.\n
+Correct: The movie was incredibly good.\n
+
+`,
+    caption: "Slide 3",
+    reference: "Avoiding Common Adverb Mistakes:",
+  },
+  {
+    lecture: `Practice:\n
+Construct sentences using different types of adverbs to demonstrate understanding. \n Consider varying the placement of adverbs within the sentences for practice.
+
+`,
+    caption: "Slide 3",
+  },
+  {
+    lecture: `Conclusion:\n
+Adverbs play a crucial role in enhancing the richness of our language by providing additional information about actions, adjectives, and other adverbs. By mastering the use of adverbs, you can make your writing more precise, descriptive, and engaging.
+
+
+`,
     caption: "Slide 3",
   },
 ];
@@ -91,13 +146,26 @@ function Lectures() {
         {lectureSlides.map((slide, index) => (
           <div key={index}>
             <div style={divStyle}>
-              <span style={spanStyle}>{slide.lecture}</span>
+              {slide.reference && (
+                <p className="font-semibold pl-[0.1rem] text-black">
+                  {slide.reference}
+                </p>
+              )}
+              {slide.lecture.split("\n").map((paragraph, i) => (
+                <p
+                  key={i}
+                  style={spanStyle}
+                  className={i === 0 ? "font-semibold" : ""}
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </div>
         ))}
       </Slide>
       <div
-        style={{ display: "flex", justifyContent: "left", margin: "50px 0" }}
+        style={{ display: "flex", justifyContent: "left", margin: "15px 0" }}
       >
         {count > 0 ? (
           <button
