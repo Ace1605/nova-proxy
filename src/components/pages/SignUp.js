@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function SignUp() {
   const navigate = useNavigate();
   return (
-    <div className="container grid place-items-center pt-[8%] pb-12">
+    <div className="container grid place-items-center pt-[4%] pb-12">
       <FaFireFlameCurved className="text-primary-1000 text-8xl 880:text-9xl" />
       <h3 className="text-2xl tracking-tighter 880:text-3xl font-semibold text-center text-primary-900 my-6 880:my-8 mx-0">
         Test Your Knowledge
