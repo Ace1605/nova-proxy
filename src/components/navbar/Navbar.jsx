@@ -14,7 +14,7 @@ function Navbar() {
     >
       <div className="container px-4 flex items-center justify-between 880:px-12 py-4 768:py-[1.15rem]">
         <a className="order-3 880:order-1" href="/courses">
-          <img className="w-[3rem]" src="/logo/nova-logo.png" alt="waec" />
+          <img className="w-[3rem]" src="/logo/nova-logo.png" alt="logo" />
         </a>
         <nav className="order-2 880:order-2 hidden 880:block">
           <ul className="flex gap-4 1180:gap-10">

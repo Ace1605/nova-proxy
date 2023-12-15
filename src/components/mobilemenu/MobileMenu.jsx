@@ -42,7 +42,7 @@ function MobileMenu() {
               </div>
             </button>
             <a href="/" onClick={() => setShow(false)} className="my-auto">
-              <FaFireFlameCurved className="flex justify-self-start 880:justify-self-center text-primary-1000 text-4xl text-left" />
+              <img className="w-[3rem]" src="/logo/nova-logo.png" alt="logo" />
             </a>
           </div>
           <nav className="px-4 pb-4">
