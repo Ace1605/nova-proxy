@@ -20,7 +20,7 @@ function PerformanceIndicator() {
         <p className="text-neutral-700 my-3 font-normal">2 courses completed</p>
         <p className="text-neutral-700 my-3 font-normal">Level 1</p>
         <button
-          className="bg-gradient-to-r from-primary-400 to-primary-200 text-white py-2 px-4 w-full rounded-xl"
+          className="bg-primary-h700 text-white py-2 px-4 w-full rounded-xl"
           type="button"
           style={{ marginRight: "20px" }}
           onClick={() => navigate("/leaderboard")}

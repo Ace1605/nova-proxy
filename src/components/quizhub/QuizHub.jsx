@@ -110,7 +110,7 @@ function QuizHub() {
             </p>
 
             <button
-              className="bg-gradient-to-r from-primary-400 to-primary-200 text-white py-2 px-4 w-full rounded-xl"
+              className="bg-primary-h700 text-white py-2 px-4 w-full rounded-xl"
               type="button"
               style={{ marginRight: "20px" }}
               onClick={() => navigate("/courses")}

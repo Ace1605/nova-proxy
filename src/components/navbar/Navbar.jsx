@@ -21,7 +21,7 @@ function Navbar() {
             {links.map((item, index) => (
               <li key={index} className="font-normal">
                 <a
-                  href={"/" + item.toLocaleLowerCase().replace(" ", "-")}
+                  href={"/courses" + item.toLocaleLowerCase().replace(" ", "-")}
                   className="flex gap-1 items-center text-primary-1000 font-semibold text-base hover:underline hover:text-blackhue-100"
                 >
                   {item}
