@@ -19,7 +19,7 @@ function SignIn() {
         Win some awesome prizes.
       </p>
       <div className="mt-12 mb-4">
-        <CustomInput placeholder="Email" type="text" />
+        <CustomInput placeholder="+234" type="tel" />
         <CustomInput placeholder="Password" type="password" />
       </div>
       <Button text="Get Started" onClick={() => navigate("/courses")} />
