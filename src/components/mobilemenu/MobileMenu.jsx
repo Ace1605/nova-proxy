@@ -48,10 +48,10 @@ function MobileMenu() {
           <nav className="px-4 pb-4">
             <ul className="grid justify-center gap-1 880:gap-8">
               {links.map((item) => (
-                <li key={item} className="my-1">
+                <li key={item} className="my-2">
                   <a
                     href={"/" + item.toLocaleLowerCase().replace(" ", "-")}
-                    className="gap-1 block font-bold text-neutral-700 text-center hover:underline hover:text-blackhue-100"
+                    className="gap-1 block font-bold text-primary-1000 text-center hover:underline hover:text-blackhue-100"
                   >
                     {item}
                   </a>
