@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
+import Modal from "react-modal/lib/components/Modal";
+import PopModal from "../modals/PopModal";
 
 let lectureSlides = [
   {
@@ -58,6 +60,9 @@ function QuizHub() {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [open, setOpen] = useState(false);
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
 
   const back = () => {
     if (slideRef.current) {
@@ -88,9 +93,36 @@ function QuizHub() {
     easing: "ease",
   };
 
+  const deleteStyles = {
+    content: {
+      top: "52%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      borderRadius: "1.2rem",
+      paddingBottom: "1rem",
+      minWidth: "30%",
+      maxWidth: "100%",
+      height: "70%",
+    },
+    overlay: {
+      backgroundColor: "rgb(244 244 244 / 70%)",
+      overflowY: "auto",
+    },
+  };
+
   return (
     <>
-      {" "}
+      <Modal
+        isOpen={open}
+        onRequestClose={onCloseModal}
+        style={deleteStyles}
+        contentLabel="Clear Modal"
+      >
+        <PopModal closeModal={onCloseModal} />
+      </Modal>{" "}
       {submitted ? (
         <div className="slide-container w-[20rem] 880:w-[30rem]">
           <div className="mt-[7rem] p-8 bg-white w-full rounded-xl">
@@ -199,7 +231,14 @@ function QuizHub() {
                 className="bg-primary-1000 text-white py-2 px-4 rounded-xl"
                 type="button"
                 style={{ marginRight: "20px" }}
-                onClick={next}
+                onClick={() => {
+                  if (count === 2) {
+                    next();
+                    onOpenModal();
+                  } else {
+                    next();
+                  }
+                }}
               >
                 Next
               </button>
