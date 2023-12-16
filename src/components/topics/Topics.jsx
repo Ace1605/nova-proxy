@@ -19,8 +19,16 @@ function Topics() {
 
   return (
     <div>
+      <p className="font-medium text-lg text-center -mt-8 mb-20">
+        This course is sponsored by{" "}
+        <img
+          className="w-[3.4rem] h-[3rem] inline"
+          src="/logo/coca-cola-logo.svg"
+          alt="logo"
+        />
+      </p>
       <div
-        className="my-8 880:my-12 relative h-[14rem] w-[20rem] 880:w-[30rem] rounded-t-3xl"
+        className="my-8 880:my-12 mx-auto relative h-[14rem] w-[20rem] 880:w-[30rem] rounded-t-3xl"
         style={{
           backgroundImage: `url("/images/bts.jpg")`,
           backgroundSize: "cover",

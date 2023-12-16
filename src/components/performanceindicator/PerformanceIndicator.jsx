@@ -1,11 +1,17 @@
 import React from "react";
 import { Avatar1 } from "../svg/Avatar";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 function PerformanceIndicator() {
   const navigate = useNavigate();
   return (
-    <div className="slide-container w-[20rem] 880:w-[30rem]">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="slide-container w-[20rem] 880:w-[30rem]"
+    >
       <div className="mt-[7rem] p-8 bg-white w-full rounded-xl">
         <div className="flex gap-2">
           <Avatar1 className="h-[3rem] w-[3rem]" />
@@ -28,7 +34,7 @@ function PerformanceIndicator() {
           View Leaderboard
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

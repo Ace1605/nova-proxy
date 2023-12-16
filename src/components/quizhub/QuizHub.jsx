@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import { Avatar1 } from "../svg/Avatar";
 
 let lectureSlides = [
   {
@@ -91,6 +90,7 @@ function QuizHub() {
 
   return (
     <>
+      {" "}
       {submitted ? (
         <div className="slide-container w-[20rem] 880:w-[30rem]">
           <div className="mt-[7rem] p-8 bg-white w-full rounded-xl">
@@ -99,8 +99,19 @@ function QuizHub() {
                 <p className="text-primary-400 font-medium text-xl w-8/12 mb-4">
                   Congratulations on completing this course!!
                 </p>
-                <p className="text-neutral-700 font-medium">
+                <p className="text-neutral-700 my-2 font-medium">
                   4/{lectureSlides.length} questions correctly
+                </p>
+                <p className="text-neutral-700 my-2 font-medium">
+                  You have earned 10 points
+                </p>
+                <p className="text-neutral-700 gap-[0.1rem] my-1 font-medium">
+                  Earn 1000 points to get a pack of coke from{" "}
+                  <img
+                    className="w-[2.7rem] h-[2.2rem] -ml-1 inline"
+                    src="/logo/coca-cola-logo.svg"
+                    alt="logo"
+                  />
                 </p>
               </div>
             </div>
@@ -135,7 +146,7 @@ function QuizHub() {
               </p>
             </div>
           </div>
-          <Slide ref={slideRef} {...properties}>
+          <Slide ref={slideRef} {...properties} canSwipe={false}>
             {lectureSlides.map((slide, index) => (
               <div key={index}>
                 {slide.options.map((x, index) => (
