@@ -7,7 +7,7 @@ function LessonTopics() {
   return (
     <>
       <Navbar />
-      <div className="container grid place-items-center pt-[8%] pb-12">
+      <div className="container px-4 880:px-12 grid place-items-center pt-[8%] pb-12">
         <Topics />
       </div>
     </>

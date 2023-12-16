@@ -14,7 +14,7 @@ function CourseSelect() {
         transition={{
           duration: 0.8,
         }}
-        className="container grid place-items-center pt-[8%] pb-12"
+        className="container px-4 880:px-12 grid place-items-center pt-[8%] pb-12"
       >
         <Courses />
       </motion.div>

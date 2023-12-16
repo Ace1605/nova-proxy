@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "../navbar/Navbar";
-import ExamSelect from "../Exams/ExamSelect";
+import Courses from "../courses/Courses";
 
 function MockExam() {
   return (
     <>
       <Navbar />
-      <div className="container grid place-items-center pt-[8%] pb-12">
-        <ExamSelect />
+      <div className="container px-4 880:px-12 grid place-items-center pt-[8%] pb-12">
+        <Courses />
       </div>
     </>
   );

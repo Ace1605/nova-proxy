@@ -112,6 +112,17 @@ function ExamQuizHub() {
                     <p className="text-neutral-700 font-medium">
                       4/{lectureSlides.length} questions correctly
                     </p>
+                    <p className="text-neutral-700 my-2 font-medium">
+                      You have earned 10 points
+                    </p>
+                    <p className="text-neutral-700 gap-[0.1rem] my-1 font-medium">
+                      Earn 1000 points to get a pack of coke from{" "}
+                      <img
+                        className="w-[2.7rem] h-[2.2rem] -ml-1 inline"
+                        src="/logo/coca-cola-logo.svg"
+                        alt="logo"
+                      />
+                    </p>
                   </div>
                 </div>
                 <p className="text-neutral-700 my-3 font-normal">Level 1</p>
@@ -120,7 +131,7 @@ function ExamQuizHub() {
                 </p>
 
                 <button
-                  className="bg-gradient-to-r from-primary-400 to-primary-200 text-white py-2 px-4 w-full rounded-xl"
+                  className="bg-primary-h700 text-white py-2 px-4 w-full rounded-xl"
                   type="button"
                   style={{ marginRight: "20px" }}
                   onClick={() => navigate("/mock-exam")}
