@@ -30,7 +30,7 @@ function Courses() {
       )}
       {location.pathname.includes("mock-exam") ? (
         <h2 className="text-lg tracking-tighter text-center 880:text-3xl my-8 880:my-8 font-semibold text-primary-900">
-          Select an examination to practice for
+          Pick a subject
         </h2>
       ) : (
         <h2 className="text-2xl tracking-tighter text-center 880:text-3xl my-12 880:my-8 font-semibold text-primary-900">
