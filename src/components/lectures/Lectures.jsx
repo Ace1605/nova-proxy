@@ -1,3 +1,4 @@
+import { useAllPrismicDocumentsByType } from "@prismicio/react";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Slide, SlideshowRef } from "react-slideshow-image";
@@ -96,6 +97,18 @@ function Lectures() {
   const [count, setCount] = useState(0);
   const navigate = useNavigate();
   let current = 1;
+  const [data, setData] = useState([]);
+
+  const [documents] = useAllPrismicDocumentsByType("courses");
+
+  useEffect(() => {
+    if (documents) {
+      const result = documents?.filter((doc) =>
+        location.pathname.includes(doc.uid)
+      );
+      setData(result);
+    }
+  }, [documents]);
 
   const back = () => {
     if (slideRef.current) {
@@ -107,10 +120,12 @@ function Lectures() {
   };
 
   const next = () => {
-    if (slideRef.current && count < lectureSlides.length) {
+    if (slideRef.current && count < data[0].data.courses.length) {
       slideRef.current.goNext();
       setCount((prevCurrent) =>
-        prevCurrent < lectureSlides.length - 1 ? prevCurrent + 1 : prevCurrent
+        prevCurrent < data[0].data.courses.length - 1
+          ? prevCurrent + 1
+          : prevCurrent
       );
     }
   };
@@ -124,91 +139,97 @@ function Lectures() {
     easing: "ease",
   };
 
-  console.log(location.pathname);
-
   return (
-    <div className="slide-container w-[20rem] 880:w-[30rem]">
-      <div
-        className="my-8 880:my-12 relative h-[14rem] rounded-t-3xl"
-        style={{
-          backgroundImage: `url("/images/bts.jpg")`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="flex items-center justify-center bg-white h-[5rem] w-full bottom-0 absolute rounded-t-3xl">
-          <p className="text-center font-medium">
-            {location.search.slice(1).replace(/%20/g, " ")}
-          </p>
-        </div>
-      </div>
-      <Slide ref={slideRef} {...properties}>
-        {lectureSlides.map((slide, index) => (
-          <div key={index}>
-            <div style={divStyle}>
-              {slide.reference && (
-                <p className="font-semibold pl-[0.1rem] text-black">
-                  {slide.reference}
-                </p>
-              )}
-              {slide.lecture.split("\n").map((paragraph, i) => (
-                <p
-                  key={i}
-                  style={spanStyle}
-                  className={i === 0 ? "font-semibold" : ""}
-                >
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-          </div>
-        ))}
-      </Slide>
-      <div
-        style={{ display: "flex", justifyContent: "left", margin: "15px 0" }}
-      >
-        {count > 0 ? (
-          <button
-            className="bg-primary-1000 text-white py-2 px-4 rounded-xl"
-            type="button"
-            style={{ marginRight: "20px" }}
-            onClick={back}
-          >
-            Back
-          </button>
-        ) : (
-          <button
-            className="bg-primary-1000 text-white py-2 px-4 rounded-xl"
-            type="button"
-            style={{ marginRight: "20px" }}
-            onClick={() => navigate(-1)}
-          >
-            Back to topics
-          </button>
-        )}
-        {count < lectureSlides.length - 1 ? (
-          <button
-            className="bg-primary-1000 text-white py-2 px-4 rounded-xl"
-            type="button"
-            style={{ marginRight: "20px" }}
-            onClick={next}
-          >
-            Next
-          </button>
-        ) : (
-          <button
-            className="bg-primary-1000 text-white py-2 px-4 rounded-xl"
-            type="button"
-            style={{ marginRight: "20px" }}
-            onClick={() => {
-              navigate(`${location.pathname}/quiz`);
+    <>
+      {data.length > 0 && (
+        <div className="slide-container w-[20rem] 880:w-[30rem]">
+          <div
+            className="my-8 880:my-12 relative h-[14rem] rounded-t-3xl"
+            style={{
+              backgroundImage: `url("/images/bts.jpg")`,
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
             }}
           >
-            Test your might🔥
-          </button>
-        )}
-      </div>
-    </div>
+            <div className="flex items-center justify-center bg-white h-[5rem] w-full bottom-0 absolute rounded-t-3xl">
+              <p className="text-center font-medium">
+                {data[0]?.data.topic[0].text}
+              </p>
+            </div>
+          </div>
+          <Slide ref={slideRef} {...properties}>
+            {data[0].data.courses.map((slide, index) => (
+              <div key={index}>
+                <div style={divStyle}>
+                  {slide.reference && (
+                    <p className="font-semibold pl-[0.1rem] text-black">
+                      {slide.reference}
+                    </p>
+                  )}
+                  {slide.context.split("\\n").map((paragraph, i) => (
+                    <p
+                      key={i}
+                      style={spanStyle}
+                      className={i === 0 ? "font-semibold" : ""}
+                    >
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </Slide>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "left",
+              margin: "15px 0",
+            }}
+          >
+            {count > 0 ? (
+              <button
+                className="bg-primary-1000 text-white py-2 px-4 rounded-xl"
+                type="button"
+                style={{ marginRight: "20px" }}
+                onClick={back}
+              >
+                Back
+              </button>
+            ) : (
+              <button
+                className="bg-primary-1000 text-white py-2 px-4 rounded-xl"
+                type="button"
+                style={{ marginRight: "20px" }}
+                onClick={() => navigate(-1)}
+              >
+                Back to topics
+              </button>
+            )}
+            {count < data[0].data.courses.length - 1 ? (
+              <button
+                className="bg-primary-1000 text-white py-2 px-4 rounded-xl"
+                type="button"
+                style={{ marginRight: "20px" }}
+                onClick={next}
+              >
+                Next
+              </button>
+            ) : (
+              <button
+                className="bg-primary-1000 text-white py-2 px-4 rounded-xl"
+                type="button"
+                style={{ marginRight: "20px" }}
+                onClick={() => {
+                  navigate(`${location.pathname}/quiz`);
+                }}
+              >
+                Test your might🔥
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

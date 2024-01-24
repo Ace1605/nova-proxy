@@ -2,8 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import { Avatar1 } from "../svg/Avatar";
 import PreQuiz from "../Exams/PreQuiz";
+import {
+  PrismicRichText,
+  useAllPrismicDocumentsByIDs,
+  usePrismicDocumentByID,
+  useSinglePrismicDocument,
+} from "@prismicio/react";
+import api from "../../api/api";
 
 let lectureSlides = [
   {
@@ -61,6 +67,12 @@ function ExamQuizHub() {
   const [selected, setSelected] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [start, setStart] = useState(false);
+  const [getting, setGetting] = useState(false);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    getQuizes();
+  }, []);
 
   const back = () => {
     if (slideRef.current) {
@@ -84,6 +96,21 @@ function ExamQuizHub() {
   const getStart = (data) => {
     setStart(data);
   };
+
+  const getQuizes = async (e) => {
+    setGetting(true);
+    const res = await api.getAll(
+      "documents/search?ref=ZX-LKhAAACIAHR32&src=apibrowser&format=json"
+    );
+    if (res) {
+      setGetting(false);
+      setData(res);
+    } else {
+      setGetting(false);
+      setData(null);
+      console.log("team err", res);
+    }
+  };
   const properties = {
     duration: 5000,
     autoplay: false,
@@ -93,7 +120,7 @@ function ExamQuizHub() {
     easing: "ease",
   };
 
-  console.log(count);
+  console.log("pris", data);
 
   return (
     <>
@@ -152,27 +179,32 @@ function ExamQuizHub() {
               >
                 <div className="flex items-center justify-center bg-white h-[7rem] w-full bottom-0 absolute rounded-t-3xl">
                   <p className="text-center font-medium px-2">
-                    {lectureSlides[count].question}
+                    {data?.results[count].data.question[0].text}
                   </p>
                 </div>
               </div>
               <Slide ref={slideRef} {...properties} canSwipe={false}>
-                {lectureSlides.map((slide, index) => (
+                {data?.results.map((slide, index) => (
                   <div key={index}>
-                    {slide.options.map((x, index) => (
+                    {slide.data.options.map((x, index) => (
                       <p
                         key={index}
                         onClick={() => {
-                          setSelected(x);
-                          slide.choice = x;
+                          setSelected(x.option);
+                          slide.choice = x.option;
                         }}
                         className={
-                          slide.choice === x || selected === x
+                          (slide.choice === x.option && x.answer === false) ||
+                          (selected === x.option && x.answer === false)
+                            ? "bg-red-700 text-white font-medium py-3 px-4 mx-auto 880:px-8 w-[18rem] my-3 880:w-[30rem] text-center shadow rounded-3xl border border-red-700 border-primary-400"
+                            : (slide.choice === x.option &&
+                                x.answer === true) ||
+                              (selected === x.option && x.answer === true)
                             ? "bg-primary-h700 text-white font-medium py-3 px-4 mx-auto 880:px-8 w-[18rem] my-3 880:w-[30rem] text-center shadow rounded-3xl border border-primary-h700 border-primary-400"
                             : "cursor-pointer bg-white font-medium py-3 px-4 mx-auto 880:px-8 w-[18rem] my-3 880:w-[30rem] text-center shadow rounded-3xl border border-primary-h700 border-primary-400"
                         }
                       >
-                        {x}
+                        {x.option}
                       </p>
                     ))}
                   </div>

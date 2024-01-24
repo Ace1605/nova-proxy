@@ -1,22 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { englishT, mathT, socialT } from "./constants";
+import { useAllPrismicDocumentsByType } from "@prismicio/react";
 
 function Topics() {
-  const [data, setData] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (location.pathname.includes("english")) {
-      setData(englishT);
-    } else if (location.pathname.includes("maths")) {
-      setData(mathT);
-    } else {
-      setData(socialT);
-    }
-  }, []);
-
+  const [documents] = useAllPrismicDocumentsByType("courses");
+  console.log("hi", documents);
   return (
     <div>
       <p className="font-medium text-lg text-center -mt-8 mb-20">
@@ -41,14 +32,14 @@ function Topics() {
           </p>
         </div>
       </div>
-      {data.map((x) => (
+      {documents?.map((topic) => (
         <p
           onClick={() => {
-            navigate(`${location.pathname}/${x.toLowerCase()}?${x}`);
+            navigate(`${location.pathname}/${topic.uid}`);
           }}
           className="cursor-pointer bg-primary-h700 text-white py-3 px-4 880:px-8 w-[18rem] 880:w-[30rem] my-3 font-medium shadow rounded-xl border border-primary-h700 mx-auto border-primary-400 hover:scale-105"
         >
-          {x}
+          {topic.data.topic[0].text}
         </p>
       ))}
     </div>
